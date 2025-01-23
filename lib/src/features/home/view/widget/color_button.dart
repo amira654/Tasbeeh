@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_application/src/features/home/cubits/counter_cubit.dart';
 
-import '../../cubits/theme_cubit.dart';
-
-Widget colorButton(BuildContext context, Color color) {
-  return GestureDetector(
+class ColorButton extends StatelessWidget {
+  const ColorButton(BuildContext context, {super.key, required this.color, required this.counter});
+ final CounterCubit counter;
+ final  Color color;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
     onTap: () {
-      context.read<ThemeCubit>().changeTheme(color);
+      counter.changeTheme(color);
     },
     child: CircleAvatar(
       radius: 30,
       backgroundColor: color,
     ),
   );
+  }
 }
+
+
